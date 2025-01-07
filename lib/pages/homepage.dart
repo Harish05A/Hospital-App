@@ -92,65 +92,81 @@ class _HomePageState extends State<HomePage> {
 
   Container header() {
     return Container(
-        color: const Color(0xff51A8FF),
-        width: double.infinity,
-        height: 350,
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      color: const Color(0xff51A8FF),
+      width: double.infinity,
+      height: 350,
+      child: Stack(
+        children: [
+          Positioned.fill(
+            child: Opacity(
+              opacity: 0.3, // Adjust the opacity as needed
+              child: Image.asset(
+                'assets/images/image.png', // Replace with your image asset path
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Hi Edi',
-                  style: TextStyle(fontSize: 18, color: Color(0xffFFFFFF)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Hi Edi',
+                      style: TextStyle(fontSize: 18, color: Color(0xffFFFFFF)),
+                    ),
+                    Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                          // ignore: deprecated_member_use
+                          color: Colors.white.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: SvgPicture.asset(
+                        'assets/vectors/notification.svg',
+                        fit: BoxFit.none,
+                      ),
+                    )
+                  ],
                 ),
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                      // ignore: deprecated_member_use
-                      color: Colors.white.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: SvgPicture.asset(
-                    'assets/vectors/notification.svg',
-                    fit: BoxFit.none,
-                  ),
+                const SizedBox(
+                  height: 30,
+                ),
+                const Text(
+                  "Let's find\nyour top doctor!",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 28,
+                      fontWeight: FontWeight.w600),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                const TextField(
+                  decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: Colors.black,
+                        size: 25,
+                      ),
+                      hintText: 'Search here...',
+                      hintStyle: TextStyle(fontWeight: FontWeight.w300),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.all(Radius.circular(50)))),
                 )
               ],
             ),
-            const SizedBox(
-              height: 30,
-            ),
-            const Text(
-              "Let's find\nyour top doctor!",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 28,
-                  fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const TextField(
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Colors.black,
-                    size: 25,
-                  ),
-                  hintText: 'Search here...',
-                  hintStyle: TextStyle(fontWeight: FontWeight.w300),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.all(Radius.circular(50)))),
-            )
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 
   Widget doctors() {
