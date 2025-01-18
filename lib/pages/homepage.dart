@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hospital_app/pages/detailpage.dart';
-
 import '../models/category.dart';
 import '../models/doctor.dart';
 
@@ -116,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      'Hi Edi',
+                      'Hi User',
                       style: TextStyle(fontSize: 18, color: Color(0xffFFFFFF)),
                     ),
                     Container(
